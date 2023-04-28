@@ -13,12 +13,13 @@ namespace CV_Maker.Controllers
             _personalDetailsRepository = personalDetailsRepository;
         }
 
-        [HttpPost]
-        public IActionResult Create([FromBody] PersonalDetail personalDetails)
+        [HttpPost("personal")]
+        public IActionResult Create( PersonalDetail personalDetails)
         {
             _personalDetailsRepository.Create(personalDetails);
             return Ok();
         }
+
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {

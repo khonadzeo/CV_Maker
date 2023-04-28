@@ -17,7 +17,7 @@ namespace CV_Maker.Controllers
 
         public IActionResult GenerateCV(int id)
         {
-            PersonalDetail personalDetails = _repository.GetById(id);
+            PersonalDetail personalDetails = (PersonalDetail)_repository.GetById(id);
 
             // Generate the PDF document
             GeneratePdf(personalDetails);

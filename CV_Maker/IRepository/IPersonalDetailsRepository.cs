@@ -4,6 +4,8 @@ namespace CV_Maker.IRepository
 {
     public interface IPersonalDetailsRepository
     {
-        Create(PersonalDetail personalDetails);
+       Task Create(PersonalDetail personalDetails);
+
+        IQueryable<PersonalDetail> GetById(int id);
     }
 }

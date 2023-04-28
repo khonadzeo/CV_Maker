@@ -5,12 +5,15 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
 using Document = iTextSharp.text.Document;
+using CV_Maker.IServices;
 
 namespace CV_Maker.Services
-{
-    public class CVgenerator
+{/// <summary>
+/// 
+/// </summary>
+    public class CVgenerator:ICVgenerator
     {
-        public void GeneratePdf(PersonalDetail personalDetails)
+        public async Task GeneratePdf(PersonalDetail personalDetails)
         {
             // Create a new PDF document
             Document document = new Document();

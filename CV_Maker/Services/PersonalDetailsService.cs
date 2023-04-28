@@ -1,6 +1,8 @@
-﻿namespace CV_Maker.Services
+﻿using CV_Maker.IServices;
+
+namespace CV_Maker.Services
 {
-    public class PersonalDetailsService
+    public class PersonalDetailsService : IPersonalDetailsService
     {
     }
 }
