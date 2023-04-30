@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CV_Maker.Controllers
 {
+
+    [Route("api/[controller]")]
+    [ApiController]
     public class PersonalDetailsController : ControllerBase
     {
         private readonly IPersonalDetailsRepository _personalDetailsRepository;
@@ -13,11 +16,11 @@ namespace CV_Maker.Controllers
             _personalDetailsRepository = personalDetailsRepository;
         }
 
-        [HttpPost("personal")]
-        public IActionResult Create( PersonalDetail personalDetails)
+        [HttpPost]
+        public async Task<IActionResult> Create( PersonalDetail personalDetails)
         {
-            _personalDetailsRepository.Create(personalDetails);
-            return Ok();
+            await _personalDetailsRepository.Create(personalDetails);
+            return Ok(personalDetails);
         }
 
         [HttpGet("{id}")]

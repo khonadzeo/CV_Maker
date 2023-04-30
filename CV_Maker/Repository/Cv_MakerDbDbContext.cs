@@ -28,6 +28,10 @@ public partial class Cv_MakerDbDbContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PK__Personal__3214EC079CDC45B3");
         });
+        modelBuilder.Entity<PersonalDetail>(entity =>
+        {
+            entity.Property(e => e.Id).ValueGeneratedOnAdd();
+        });
 
         OnModelCreatingPartial(modelBuilder);
     }

@@ -3,24 +3,29 @@ using CV_Maker.Repository.Models;
 using iTextSharp.text.pdf;
 using iTextSharp.text;
 using Microsoft.AspNetCore.Mvc;
+using CV_Maker.IServices;
 
 namespace CV_Maker.Controllers
 {
+
+    [Route("api/[controller]")]
+    [ApiController]
     public class CVController : Controller
     {
         private readonly IPersonalDetailsRepository _repository;
-
-        public CVController(IPersonalDetailsRepository repository)
+        private readonly ICVgenerator _generator;
+        public CVController(IPersonalDetailsRepository repository ,ICVgenerator cVgenerator)
         {
+            _generator = cVgenerator;
             _repository = repository;
         }
-
+        [HttpGet("{id}")]
         public IActionResult GenerateCV(int id)
         {
-            PersonalDetail personalDetails = (PersonalDetail)_repository.GetById(id);
+            PersonalDetail personalDetails = (PersonalDetail)_repository.GetInfoById(id);
 
             // Generate the PDF document
-            GeneratePdf(personalDetails);
+            _generator.GeneratePdf(personalDetails);
 
             // Return the PDF document to the client
             byte[] pdfBytes = System.IO.File.ReadAllBytes("cv.pdf");

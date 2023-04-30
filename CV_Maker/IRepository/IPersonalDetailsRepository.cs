@@ -7,5 +7,7 @@ namespace CV_Maker.IRepository
        Task Create(PersonalDetail personalDetails);
 
         IQueryable<PersonalDetail> GetById(int id);
+
+        PersonalDetail GetInfoById(int id);
     }
 }
