@@ -36,8 +36,7 @@ namespace CV_Maker.Services
                 $" {personalDetails.State}, " +
                 $"{personalDetails.Country}," +
                 $" {personalDetails.PostalCode}\n",
-                FontFactory.GetFont(FontFactory.TIMES_BOLD, 16)));
-          //  personalInfo.Alignment = Element.ALIGN_CENTER;
+                FontFactory.GetFont(FontFactory.TIMES, 16)));
             document.Add(personalInfo);
 
             document.Add(new Paragraph("\n"));

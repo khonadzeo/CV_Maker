@@ -7,20 +7,31 @@ namespace CV_Maker.Repository;
 
 public partial class Cv_MakerDbDbContext : DbContext
 {
+    private readonly IConfiguration _configuration;
     public Cv_MakerDbDbContext()
     {
     }
 
-    public Cv_MakerDbDbContext(DbContextOptions<Cv_MakerDbDbContext> options)
+    public Cv_MakerDbDbContext(IConfiguration configuration,DbContextOptions<Cv_MakerDbDbContext> options)
         : base(options)
     {
+        _configuration = configuration; 
     }
 
     public virtual DbSet<PersonalDetail> PersonalDetails { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        var config = _configuration.GetConnectionString("CV_Maker");
+        if (!optionsBuilder.IsConfigured) 
+        {
+            optionsBuilder.UseSqlServer(config);
+        
+        }
+
+    }
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=DESKTOP-6NI3VK2\\SQLEXPRESS;Initial Catalog=CV_MakerDb;Integrated Security=True;Trusted_Connection=True;TrustServerCertificate=True");
+      // => optionsBuilder.UseSqlServer("Data Source=DESKTOP-6NI3VK2\\SQLEXPRESS;Initial Catalog=CV_MakerDb;Integrated Security=True;Trusted_Connection=True;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -55,6 +55,11 @@ builder.Services.AddSwaggerGen(c =>
     c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory,
         $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
 });
+IConfiguration configuration =new ConfigurationBuilder()
+    .SetBasePath(AppContext.BaseDirectory)
+    .AddJsonFile("appsettings.json")
+    .Build();
+string connection = configuration.GetConnectionString("CV_Maker");
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<Cv_MakerDbDbContext>(
     o => o.UseSqlServer(builder.Configuration.GetConnectionString("CV_Maker")));
