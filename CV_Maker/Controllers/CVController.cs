@@ -7,18 +7,30 @@ using CV_Maker.IServices;
 
 namespace CV_Maker.Controllers
 {
-
+    /// <summary>
+    /// provides endpoint for creation of cv document
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class CVController : Controller
     {
         private readonly IPersonalDetailsRepository _repository;
         private readonly ICVgenerator _generator;
+        /// <summary>
+        /// initialize constructor
+        /// </summary>
+        /// <param name="repository"></param>
+        /// <param name="cVgenerator"></param>
         public CVController(IPersonalDetailsRepository repository ,ICVgenerator cVgenerator)
         {
             _generator = cVgenerator;
             _repository = repository;
         }
+        /// <summary>
+        /// this creates a pdf cv document from the personaldetails obtained by ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public IActionResult GenerateCV(int id)
         {

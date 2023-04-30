@@ -6,6 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CV_Maker.Repository.Models
 {
+    /// <summary>
+    /// represents personal details oject type
+    /// </summary>
     public partial class PersonalDetail
     {
         [Key]

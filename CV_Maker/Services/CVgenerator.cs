@@ -8,7 +8,11 @@ using System.Threading.Tasks;
 namespace CV_Maker.Services
 {
     public class CVgenerator : ICVgenerator
-    {
+    {/// <summary>
+    /// generates the pdf document and manages the formating
+    /// </summary>
+    /// <param name="personalDetails"></param>
+    /// <returns></returns>
         public async Task GeneratePdf(PersonalDetail personalDetails)
         {
             // Create a new PDF document
