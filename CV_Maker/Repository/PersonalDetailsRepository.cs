@@ -7,34 +7,27 @@ namespace CV_Maker.Repository
 {
     public class PersonalDetailsRepository : IPersonalDetailsRepository
     {
-        private readonly Cv_MakerDbDbContext _connectionString;
         private readonly IPersonalDetailsService _personalDetailsService;
 
-        public PersonalDetailsRepository(Cv_MakerDbDbContext connectionString)
+        public PersonalDetailsRepository(IPersonalDetailsService personalDetailsService)
         {
-            _connectionString = connectionString;
+            _personalDetailsService = personalDetailsService;
         }
 
         public async Task Create(PersonalDetail personalDetails)
         {
-            await _connectionString.PersonalDetails.AddAsync(personalDetails);
-            await _connectionString.SaveChangesAsync();
+            await _personalDetailsService.Create(personalDetails);
+           
         }
         public IQueryable< PersonalDetail> GetById(int id)
         {
-            var results = _connectionString.PersonalDetails;
-
-            // return results;
-            return from personalDetail in results
-                   where personalDetail.Id == id
-                   select personalDetail;
+            var results=_personalDetailsService.GetById(id);
+            return results;
         }
         public PersonalDetail GetInfoById(int id)
         {
-            return _connectionString.PersonalDetails.FirstOrDefault(p => p.Id == id);
+            var results=_personalDetailsService.GetInfoById(id);
+            return results;
         }
-
-
-
     }
 }

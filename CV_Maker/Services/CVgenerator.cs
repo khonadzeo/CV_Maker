@@ -47,7 +47,7 @@ namespace CV_Maker.Services
             education.Alignment = Element.ALIGN_CENTER;
             document.Add(education);
             Paragraph educationDetails = new Paragraph(personalDetails.Education);
-           // educationDetails.Alignment = Element.ALIGN_CENTER;
+            educationDetails.Alignment = Element.ALIGN_CENTER;
             document.Add(educationDetails);
 
             document.Add(new Paragraph("\n"));
@@ -57,7 +57,7 @@ namespace CV_Maker.Services
             workExperience.Alignment = Element.ALIGN_CENTER;
             document.Add(workExperience);
             Paragraph workExperienceDetails = new Paragraph(personalDetails.WorkExperience);
-           // workExperienceDetails.Alignment = Element.ALIGN_CENTER;
+            workExperienceDetails.Alignment = Element.ALIGN_CENTER;
             document.Add(workExperienceDetails);
 
             document.Add(new Paragraph("\n"));
@@ -74,7 +74,9 @@ namespace CV_Maker.Services
             document.Add(new Paragraph("\n"));
             hobbiesSection.Alignment = Element.ALIGN_CENTER;
             document.Add(hobbiesSection);
-            document.Add(new Paragraph(personalDetails.Hobbies));
+            Paragraph hobbiesDetail = new Paragraph(personalDetails.Hobbies);
+            hobbiesDetail.Alignment = Element.ALIGN_CENTER;
+            document.Add(hobbiesDetail);
 
             document.Add(new Paragraph("\n"));
             document.Add(new Paragraph("\n"));
@@ -82,7 +84,9 @@ namespace CV_Maker.Services
             document.Add(new Paragraph("\n"));
             certificatesSection.Alignment = Element.ALIGN_CENTER;
             document.Add(certificatesSection);
-            document.Add(new Paragraph(personalDetails.Certificates));
+            Paragraph certificatesDetails = new Paragraph(personalDetails.Certificates);
+            certificatesDetails.Alignment = Element.ALIGN_CENTER;
+            document.Add(certificatesDetails);
 
             document.Add(new Paragraph("\n"));
             document.Add(new Paragraph("\n"));
@@ -90,7 +94,9 @@ namespace CV_Maker.Services
             document.Add(new Paragraph("\n"));
             languagesSection.Alignment = Element.ALIGN_CENTER;
             document.Add(languagesSection);
-            document.Add(new Paragraph(personalDetails.Languages));
+            Paragraph languageDetails = new Paragraph(personalDetails.Languages);
+            languageDetails.Alignment = Element.ALIGN_CENTER;
+            document.Add(languageDetails);
 
             document.Add(new Paragraph("\n"));
             document.Add(new Paragraph("\n"));
@@ -98,7 +104,9 @@ namespace CV_Maker.Services
             document.Add(new Paragraph("\n"));
             skillsSection.Alignment = Element.ALIGN_CENTER;
             document.Add(skillsSection);
-            document.Add(new Paragraph(personalDetails.Skills));
+            Paragraph skillDetails = new Paragraph(personalDetails.Skills);
+            skillDetails.Alignment = Element.ALIGN_CENTER;
+            document.Add(skillDetails);
 
             document.Add(new Paragraph("\n"));
             document.Add(new Paragraph("\n"));
@@ -107,7 +115,7 @@ namespace CV_Maker.Services
             reference.Alignment = Element.ALIGN_CENTER;
             document.Add(reference);
             Paragraph referenceDetails = new Paragraph(personalDetails.Reference);
-            //referenceDetails.Alignment = Element.ALIGN_CENTER;
+            referenceDetails.Alignment = Element.ALIGN_CENTER;
             document.Add(referenceDetails);
 
             // Close the document

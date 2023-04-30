@@ -32,28 +32,6 @@ namespace CV_Maker.Controllers
             return File(pdfBytes, "application/pdf", "cv.pdf");
         }
 
-        private void GeneratePdf(PersonalDetail personalDetails)
-        {
-            // Create a new PDF document using iTextSharp
-            using (var document = new Document())
-            {
-                // Create a new PDF writer and attach the document to it
-                using (var writer = PdfWriter.GetInstance(document, new FileStream("cv.pdf", FileMode.Create)))
-                {
-                    // Open the document for writing
-                    document.Open();
-
-                    // Add the personal details to the document
-                    document.Add(new Paragraph(personalDetails.FirstName + " " + personalDetails.LastName));
-                    document.Add(new Paragraph(personalDetails.Address));
-                    document.Add(new Paragraph(personalDetails.Email));
-                    document.Add(new Paragraph(personalDetails.Phone));
-
-                    // Close the document
-                    document.Close();
-                }
-            }
-        }
     }
 
 }
